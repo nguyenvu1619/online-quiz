@@ -44,7 +44,7 @@ export const ErrorCodes = {
     },
     QUIZ_SESSION_NOT_FOUND: {
         statusCode: StatusCodes.NOT_FOUND,
-        message: 'Quiz not found',
+        message: 'Quiz session not found',
     },
     USER_JOINED_QUIZ: {
         statusCode: StatusCodes.CONFLICT,

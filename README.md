@@ -6,7 +6,7 @@ graph TD
     B <-->|Authenticate| C[Auth Server]
     B <-->|Forward/Receive request/WebSocket event| D[Application Server]
     D -->|Query/Update Database| E[Database]
-    I -->|Scan all events| E[Database]
+    I -->|Scan events| E[Database]
     I[Publish Event Workers] -->|Publish event| F[Event Bus]
     F -->|Consume event| G[Update Cache Workers]
     G -->|Update cache| H[Cache]
