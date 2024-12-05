@@ -1,0 +1,41 @@
+version: '3'
+services:
+    express-typescript:
+        build:
+            context: .
+            dockerfile: local.Dockerfile
+        container_name: 'app-express-typescript'
+        volumes:
+            - .:/usr/src/app/
+        working_dir: /usr/src/app
+        environment:
+            - DATABASE_HOST=postgres
+            - DATABASE_PORT=5432
+            - DATABASE_USER=postgres
+            - DATABASE_PASSWORD=postgres
+            - DATABASE_NAME=appdb
+            - CACHE_URL=redis://redis:6379
+        command: sh -c "npm install && npm run dev"
+        depends_on:
+            - postgres
+            - redis
+        ports:
+            - 3030:3030
+    postgres:
+        image: postgres:15
+        container_name: postgres
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: appdb
+        ports:
+          - "5432:5432"
+        volumes:
+          - database-data:/var/lib/postgresql/data
+    redis:
+        image: redis:7
+        container_name: redis
+        ports:
+          - "6379:6379"
+volumes:
+  database-data:

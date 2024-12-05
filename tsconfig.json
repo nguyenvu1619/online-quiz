@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["jest"],
+  },
+  "include": [
+    "src/**/*.ts",
+    "__tests__/**/*.ts"
+, "sequelize-cli.config.ts"  ],
+  "exclude": [
+    "typings/*",
+    "node_modules"
+  ]
+}
